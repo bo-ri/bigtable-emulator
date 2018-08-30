@@ -49,4 +49,10 @@ creds = クレデンシャル
   - dockerの`--link`オプションを使ってcbt のコンテナからemulatorのコンテナに直接アクセスできるようにしてみる
     - よくわからないけどエラー変わらず
 
-- やはり方向性としては`cbt_container -> localhost -(port forward)-> emulator_container`的な感じで間違ってはいないはず．
+- やはり方向性としては`cbt_container -> localhost -(port forward)-> emulator_container`的な感じで間違ってはいないはず．
+
+- ローカル環境にcbtとgcloudインストールして試した
+  - `~/.config/gcloud/emulator/bigtable/env.yum`をマウントすればエラーなく`$(gcloud beta emulators bigtable env-init)`が実行できるが，cbtコマンドは実行できない
+  - ローカルでemulator起動すればローカルのcbtコマンド使える．同一コンテナ内でcbt使えたのと一緒，再現性あり．
+- 同じマシン上で起動していると考えない方がいいか？
+- リモートに接続するイメージか，sshとか？コードからいけるか試す．
